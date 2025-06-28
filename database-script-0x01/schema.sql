@@ -78,3 +78,12 @@ CREATE TABLE Message (
     FOREIGN KEY (sender_id) REFERENCES User (user_id),
     FOREIGN KEY (recipient_id) REFERENCES User (user_id)
 )
+
+CREATE INDEX idx_email
+ON User (email);
+
+CREATE INDEX idx_property
+ON Booking (property_id);
+
+CREATE INDEX idx_booking
+ON Payment (booking_id);
