@@ -5,7 +5,8 @@ INNER JOIN User u ON b.user_id = u.user_id;
 
 SELECT p.name, r.comment
 FROM Property p
-LEFT JOIN review r ON p.property_id = r.property_id;
+LEFT JOIN review r ON p.property_id = r.property_id
+ORDER BY p.name ASC;
 
 
 #During this task I found out that MySQL database does not support FULL OUTER JOIN directly.
