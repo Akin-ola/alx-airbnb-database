@@ -7,3 +7,11 @@ FROM (
     GROUP BY property_id
 ) AS property_review
 WHERE avg_rating > 4.0;
+
+SELECT user_id, first_name
+FROM User u
+WHERE(
+    SELECT COUNT(*)
+    FROM Booking b
+    WHERE u.user_id = b.user_id
+) > 3;
