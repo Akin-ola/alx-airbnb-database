@@ -9,6 +9,9 @@ CREATE TABLE User (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+ALTER TABLE User
+MODIFY password_hash VARCHAR(255)
+
 CREATE TABLE Property (
     property_id CHAR(36) PRIMARY KEY,
     host_id CHAR(36),
@@ -32,7 +35,7 @@ CREATE TABLE Booking (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (property_id) REFERENCES Property (property_id),
     FOREIGN KEY (user_id) REFERENCES User (user_id)
-)
+);
 
 ALTER TABLE property
 MODIFY name VARCHAR(50) NOT NULL,
@@ -58,7 +61,7 @@ CREATE TABLE Payment (
     amount DECIMAL NOT NULL,
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     payment_method ENUM('credit_card', 'paypal', 'stripe') NOT NULL
-)
+);
 
 CREATE TABLE Review (
     review_id CHAR(36) PRIMARY KEY,
@@ -67,7 +70,7 @@ CREATE TABLE Review (
     rating INTEGER CHECK (rating BETWEEN 1 AND 5) NOT NULL,
     comment TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 CREATE TABLE Message (
     message_id CHAR(36) PRIMARY KEY,
@@ -77,7 +80,7 @@ CREATE TABLE Message (
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (sender_id) REFERENCES User (user_id),
     FOREIGN KEY (recipient_id) REFERENCES User (user_id)
-)
+);
 
 CREATE INDEX idx_email
 ON User (email);
