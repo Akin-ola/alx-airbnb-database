@@ -48,3 +48,9 @@ FROM User u
 RIGHT JOIN Booking b ON u.user_id = b.user_id
 RIGHT JOIN Property p ON b.property_id = p.property_id
 RIGHT JOIN Payment pay ON pay.booking_id = b.booking_id;
+
+EXPLAIN ANALYZE SELECT * FROM Property WHERE name= 'Cozy Studio Flat'
+
+SELECT *
+FROM User
+WHERE first_name= 'Zainab' AND role='guest';
