@@ -1,0 +1,22 @@
+CREATE INDEX idx_name
+ON Property (name);
+
+CREATE INDEX idx_first_name
+ON User (first_name);
+
+CREATE INDEX idx_user
+ON Booking (user_id);
+
+EXPLAIN SELECT user_id, COUNT(*) AS user_total_booking
+FROM booking
+GROUP BY user_id;
+
+EXPLAIN SELECT u.first_name, b.booking_id
+FROM User u
+LEFT JOIN booking b ON u.user_id = b.user_id
+UNION
+SELECT u.first_name, b.booking_id
+FROM User u
+RIGHT JOIN booking b ON u.user_id = b.user_id;
+
+EXPLAIN SELECT * FROM Property WHERE name= 'Cozy Studio Flat' ;
