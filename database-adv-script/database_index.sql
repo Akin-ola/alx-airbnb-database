@@ -19,4 +19,4 @@ SELECT u.first_name, b.booking_id
 FROM User u
 RIGHT JOIN booking b ON u.user_id = b.user_id;
 
-EXPLAIN SELECT * FROM Property WHERE name= 'Cozy Studio Flat' ;
+EXPLAIN ANALYZE SELECT * FROM Property WHERE name= 'Cozy Studio Flat' ;
